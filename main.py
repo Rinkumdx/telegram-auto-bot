@@ -7,7 +7,6 @@ from telegram.ext import Application, CommandHandler, ContextTypes
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-# Render Web Service-এর Port Timeout আটকানোর জন্য ওয়েব সার্ভার
 class HealthCheckHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -63,14 +62,13 @@ async def send_scheduled_content(chat_id: int, context: ContextTypes.DEFAULT_TYP
         )
 
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"Error sending scheduled messages: {e}")
 
 def main():
     if not TOKEN:
-        print("Error: BOT_TOKEN Environment Variable is missing!")
+        print("Error: BOT_TOKEN is missing")
         return
 
-    # পোর্ট সার্ভার ব্যাকগ্রাউন্ডে চালু করা
     threading.Thread(target=start_health_check_server, daemon=True).start()
 
     app = Application.builder().token(TOKEN).build()
@@ -81,4 +79,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+        
