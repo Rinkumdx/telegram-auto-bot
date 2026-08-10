@@ -12,6 +12,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     welcome_text = (
         f"Hello {user_first_name}! 👋\n\n"
         "Welcome to Forex Global Trading 📈\n\n"
+        
         "Are you looking to learn crypto trading strategies and get daily market insights for free? You are in the right place!
 We break down complex market movements to help you understand:
 
@@ -24,7 +25,7 @@ Everything is thoroughly analyzed by our team before sharing with you—100% Fre
     )
 
     keyboard = [
-        [InlineKeyboardButton("📢 Join Our Channel", url="https://t.me/your_channel_username")]
+        [InlineKeyboardButton("📢 Join Free channel", url="https://t.me/GoldMarketAnalysis01")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
@@ -37,7 +38,7 @@ async def send_scheduled_content(chat_id: int, context: ContextTypes.DEFAULT_TYP
         caption_10m = "🚀 **Free AI Analysis & Signals**\n\nCheck out our daily market updates in the channel!"
         await context.bot.send_photo(
             chat_id=chat_id,
-            photo="https://picsum.photos/800/600",
+            photo="https://t.me/starcentre2/5",
             caption=caption_10m,
             parse_mode="Markdown"
         )
@@ -46,7 +47,7 @@ async def send_scheduled_content(chat_id: int, context: ContextTypes.DEFAULT_TYP
         caption_1h = "📊 **Recent Client Results & Profit Proof!**\n\nReady to start earning today? Join our community now."
         await context.bot.send_photo(
             chat_id=chat_id,
-            photo="https://picsum.photos/800/600",
+            photo="https://t.me/starcentre2/7?single",
             caption=caption_1h,
             parse_mode="Markdown"
         )
