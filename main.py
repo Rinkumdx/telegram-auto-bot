@@ -1,9 +1,23 @@
 import asyncio
 import os
+import threading
+from http.server import HTTPServer, BaseHTTPRequestHandler
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, ContextTypes
 
 TOKEN = os.getenv("BOT_TOKEN")
+
+# Render Web Service-এর Port Timeout আটকানোর জন্য ওয়েব সার্ভার
+class HealthCheckHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+
+def start_health_check_server():
+    port = int(os.environ.get("PORT", 8080))
+    server = HTTPServer(('0.0.0.0', port), HealthCheckHandler)
+    server.serve_forever()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
@@ -26,7 +40,6 @@ Everything is thoroughly analyzed by our team before sharing with you—100% Fre
     reply_markup = InlineKeyboardMarkup(keyboard)
 
     await update.message.reply_text(welcome_text, reply_markup=reply_markup)
-    
     asyncio.create_task(send_scheduled_content(chat_id, context))
 
 async def send_scheduled_content(chat_id: int, context: ContextTypes.DEFAULT_TYPE):
@@ -50,12 +63,15 @@ async def send_scheduled_content(chat_id: int, context: ContextTypes.DEFAULT_TYP
         )
 
     except Exception as e:
-        print(f"Error sending scheduled messages: {e}")
+        print(f"Error: {e}")
 
 def main():
     if not TOKEN:
-        print("Error: BOT_TOKEN is not set in Environment Variables!")
+        print("Error: BOT_TOKEN Environment Variable is missing!")
         return
+
+    # পোর্ট সার্ভার ব্যাকগ্রাউন্ডে চালু করা
+    threading.Thread(target=start_health_check_server, daemon=True).start()
 
     app = Application.builder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
@@ -65,4 +81,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-        
+    
