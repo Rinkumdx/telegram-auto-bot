@@ -13,7 +13,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"Hello {user_first_name}! 👋\n\n"
         "Welcome to Forex Global Trading 📈\n\n"
         
-        "Are you looking to learn crypto trading strategies and get daily market insights for free? You are in the right place!
+        ("Are you looking to learn crypto trading strategies and get daily market insights for free? You are in the right place!
 We break down complex market movements to help you understand:
 
 When to Buy & Sell – Clear entry and exit points for optimal trades.
@@ -21,8 +21,7 @@ Token Analysis – In-depth research on high-potential coins.
 Risk Management – Essential rules to protect and grow your capital.
 Everything is thoroughly analyzed by our team before sharing with you—100% Free!
 
-👇 Click the button below to join our official channel: 👇"
-    )
+👇 Click the button below to join our official channel: 👇")
 
     keyboard = [
         [InlineKeyboardButton("📢 Join Free channel", url="https://t.me/GoldMarketAnalysis01")]
