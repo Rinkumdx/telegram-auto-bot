@@ -13,13 +13,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     welcome_text = (
         f"Hello {user_first_name}! 👋\n\n"
         "Welcome To Forex Global Trading !\n"
-        "👋 Hello Tahsan PROMOTER!
-
-Welcome to Forex Global Trading 📈
-
-Welcome to Forex & Crypto Global Trading! 📈
-
-Are you looking to learn crypto trading strategies and get daily market insights for free? You are in the right place!
+        
+        "Are you looking to learn crypto trading strategies and get daily market insights for free? You are in the right place!
 We break down complex market movements to help you understand:
 
 When to Buy & Sell – Clear entry and exit points for optimal trades.
