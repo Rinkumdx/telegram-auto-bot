@@ -34,7 +34,7 @@ Everything is thoroughly analyzed by our team before sharing with you—100% Fre
 👇 Click the button below to join our official channel: 👇"""
 
     keyboard = [
-        [InlineKeyboardButton("📢 Join Free Channel", url="https://t.me/GoldMarketAnalysis01")]
+        [InlineKeyboardButton("📢 Join Free Channel", url="https://t.me/+YVJuEuVXyxJjM2I0")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
 
